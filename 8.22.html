@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+        <script src="https://unpkg.com/vue"></script>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            #wrapper{
+              position: relative;
+              padding-left:210px;
+              padding-right:190px;
+            }
+            #main{
+                width: 100%;
+                height: 300px;
+                background-color: red;
+              
+            }
+            #left{
+                width:300px;
+                height: 300px;
+                background-color: rebeccapurple;
+               
+                
+            }
+        </style>
+    </head>
+    <body>
+     <div id="app">
+        {{msg}}
+    </div>
+        <input type="button" onclick="jishiqi()" value="点击">
+    <div id="text">
+            10
+    </div>
+    <div id="wrapper">
+        <div id="main"> mian </div>
+        <div id="left">left</div>
+    </div>
+       <script>
+          var app = new Vue({
+               el:'#app',
+               data: {
+                 msg:"hello"
+               }
+           })
+           var obj = {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+                 }
+            function output(){
+                Object.keys(obj);
+            }
+            output();
+            
+            function jishiqi(){
+                var text = document.getElementById("text").innerHTML;
+                var timer = setInterval(function(){
+                    text -=1;
+                    document.getElementById("text").innerHTML = text;
+                    if(text == 0){
+                       clearInterval(timer);
+                       document.getElementById("text").innerHTML = 10;
+                    }
+                },1000)
+            }
+            
+       </script>
+    </body>
+</html>
