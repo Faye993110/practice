@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            //JS实现clone()方法，对五种主要数据类型进行值复制
+            //Object、Array、Boolean、Number、String
+            //分为三种情况：普通变量，Array，Object
+            //递归调用
+           function clone(obj){
+               var cloneObj ;
+               if(obj instanceof Array){//克隆数组
+                   cloneObj = [];
+                   var i = cloneObj.length;
+                   while(i--){
+                       cloneObj[i] = clone(obj[i]);
+                   }
+                   return cloneObj;
+               }else if(Obj instanceof Object){//克隆对象
+                   cloneObj = {};  //创建一个空对象
+                   for(var k in cloneObj){   //为这个对象添加新属相
+                       cloneObj[k] = clone(obj[k]);
+                   }
+                   return cloneObj;
+               }else{//普通变量直接赋值
+                   return obj;
+               }
+           }
+        </script>
+    </body>
+</html>

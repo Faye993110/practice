@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTMLCollection - 蜗牛博客</title>
+</head>
+<body>
+	<table id="table">
+		<tr id="row">
+		    <th></th>
+		    <th></th>
+		</tr>
+	</table>
+	<map id="Map"></map>
+	<form id="form"></form>
+	<select id="select"></select>
+	<div class="box"></div>
+	<div class="box"></div>
+	<a href=""></a>
+	<p>请打开控制台查看输出</p>
+
+	
+	<script type="text/javascript">
+	var image=document.images //所有img元素
+	var links=document.links //所有带href属性的a元素和area元素
+	var anchors=document.anchors //所有带name属性的a元素
+	var forms=document.forms //所有form元素
+	var script=document.scripts //所有script元素
+	var applets=document.applets //所有applet元素
+	var embeds=document.embeds //所有embed元素
+	var plugins=document.plugins //document.与embeds相同
+	var children=document.getElementById("table").children
+	var tBodies=document.getElementById("table").tBodies
+	var rows=document.getElementById("table").rows
+	var cells=document.getElementById("row").cells
+	var areas=document.getElementById("Map").areas
+
+	var docall=document.all //HTMLAllCollection，与HTMLCollection类似
+	var elems=document.getElementById("form").elements //HTMLFormControlsCollection extends HTMLCollection
+	var options=document.getElementById("select").options //HTMLOptionsCollection extends HTMLCollection
+	var elemByClassName=document.getElementsByClassName("box")
+	var elemByTagName=document.getElementsByTagName("div")
+	var elemByTagNameNS=document.getElementsByTagNameNS("*", "a")
+
+
+	console.dir("document.images："+Object.prototype.toString.call(image));
+	console.dir("document.links："+Object.prototype.toString.call(links));
+	console.dir("document.anchors："+Object.prototype.toString.call(anchors));
+	console.dir("document.forms："+Object.prototype.toString.call(forms));
+	console.dir("document.scripts："+Object.prototype.toString.call(script));
+	console.dir("document.applets："+Object.prototype.toString.call(applets));
+	console.dir("document.embeds："+Object.prototype.toString.call(embeds));
+	console.dir("document.plugins："+Object.prototype.toString.call(plugins));
+	console.dir("document.getElementById('table').children："+Object.prototype.toString.call(children));
+	console.dir("document.getElementById('table').tBodies："+Object.prototype.toString.call(tBodies)); 
+	console.dir("document.getElementById('table').rows："+Object.prototype.toString.call(rows)); 
+	console.dir("document.getElementById('row').cells："+Object.prototype.toString.call(cells)); 
+	console.dir("document.getElementById('Map').areas："+Object.prototype.toString.call(areas)); 
+	console.dir("document.all："+Object.prototype.toString.call(docall)); 
+	console.dir("document.getElementById('form').elements："+Object.prototype.toString.call(elems)); 
+	console.dir("document.getElementById('select').options："+Object.prototype.toString.call(options)); 
+	console.dir("document.getElementsByClassName('box')："+Object.prototype.toString.call(elemByClassName));
+	console.dir("document.getElementsByTagName('div')："+Object.prototype.toString.call(elemByTagName));
+	console.dir("document.getElementsByTagNameNS('*', 'a')："+Object.prototype.toString.call(elemByTagNameNS));
+
+
+ //控制台对应的输出：
+//  document.images：[object HTMLCollection]
+//  document.links：[object HTMLCollection]
+//  document.anchors：[object HTMLCollection]
+//  document.forms：[object HTMLCollection]
+//  document.scripts：[object HTMLCollection]
+//  document.applets：[object HTMLCollection]
+//  document.embeds：[object HTMLCollection]
+//  document.plugins：[object HTMLCollection]
+//  document.getElementById('table').children：[object HTMLCollection]
+//  document.getElementById('table').tBodies：[object HTMLCollection]
+//  document.getElementById('table').rows：[object HTMLCollection]
+//  document.getElementById('row').cells：[object HTMLCollection]
+//  document.getElementById('Map').areas：[object HTMLCollection]
+//  document.all：[object HTMLAllCollection]
+//  document.getElementById('form').elements：[object HTMLFormControlsCollection]
+//  document.getElementById('select').options：[object HTMLOptionsCollection]
+//  document.getElementsByClassName('box')：[object HTMLCollection]
+//  document.getElementsByTagName('div')：[object HTMLCollection]
+//  document.getElementsByTagNameNS('*', 'a')：[object HTMLCollection]
+
+	</script>
+</body>
+</html>
