@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       
+    </head>
+    <body>
+        <script>
+             var localHandler = function(data){
+                 alert("我是本地函数，可以访问远程数据，远程带来的数据是:"+data.result);
+             }
+
+             //首先定义一个回调函数
+             //然后给出跳转链接
+             //然后动态生成script标签
+             //添加到头部
+            //  var flightHander = function(data){
+            //      alert("您预订的机票价格是："+data.price+"元，余票："+data.ticket+"张";
+            //  }
+
+            //  var url = "http://flightQuery.com/jsonp/flightResult.aspx?code=CA1998&&callback=flightHander";
+            //  var script = document.createElement("script");
+            //  script.setAttribute("src", url);
+            //  document.getElmentsByTagName('head')[0].appendChild(script);
+        </script>
+        <script src="remote.js"></script>
+    </body>
+</html>

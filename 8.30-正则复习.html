@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+      <script>
+        // var re = /(A?(B?(C?)))/;  
+        // /*上面的正则表达式将依次产生三个分组 
+        // (A?(B?(C?))) 最外面的 
+        // (B?(C?)) 
+        // (C?)*/  
+        // str = "ABC";  
+        // re.test(str);//反向引用被存储在RegExp对象的静态属性1—1—9中  
+        // alert(RegExp.$1+"\n"+RegExp.$2+"\n"+RegExp.$3);  
+        // //反向引用也可以在正则表达式中使用\1 ,\2...这类的形式使用  
+        // re = /\d+(\D)\d+\1\d+/;  
+        // str = "2008-1-1";  
+        // alert(re.test(str));//true  
+        // str = "2008-4_3";  
+        // alert(re.test(str));//false 
+        // re = /(\d)\s(\d)/;  
+        // str = "1234 5678";  
+        // alert(str.replace(re,"$2"));//在这个里面1表示第一个分组1234,1表示第一个分组1234,2则表示5678  
+
+        var re = /^\w{1,15}(?:@(?!-))(?:(?:[a-z0-9-]*)(?:[a-z0-9](?!-))(?:\.(?!-)))+[a-z]{2,4}$/;  
+        //实际上是等于：
+        var re = /^\w{1,15}(@(?!-))(([a-z0-9]*)([a-z0-9](?!-))(\.(?!-)))+[a-z]{2,4}$/;
+        // var = /^\w{1,15}@(?!-)[a-z0-9]*[a-z0-9](?!-)\.(?!-)+[a-z]{2,4}$/
+        str = "43948@qq.com"
+        console.log(re.test(str)) ;
+// debugger
+      </script>
+    </body>
+</html>

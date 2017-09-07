@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       div{
+        width: 100px; 
+                height: 100px; 
+                background: red; 
+                margin: 15px; 
+                padding: 10px; 
+                border: 5px solid green; 
+                display: inline-block; 
+                overflow: hidden; 
+                transition: all linear 2s;
+       }
+    </style>
+</head>
+<body>
+    <div class="none">1111</div>
+    <div class="hidden">2222</div>
+    <div class="opacity">3333</div>
+    <div class="box0"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+       
+ $(".none").on("click", function () {
+     console.log("none clicked");
+     $(this).css("display", "none");
+ })
+ $(".hidden").on("click", function () {
+     console.log("hidden clicked");
+     $(this).css("visibility", "hidden");
+ })
+ $(".opacity").on("click", function () {
+     console.log("opacity0 clicked");
+     $(this).css("opacity", 0);
+ })
+ $(".box0").on("click", function () {
+     console.log("height0 clicked");
+     $(this).css({
+         "height": 0,
+     });
+ })
+
+ //1、display:none：完全不受transition属性的影响，元素立即消失
+ //2、visibility：hidden：元素消失的时间跟transition属性设置的时间一样，但是没有动画效果
+ //3、opacity和height等属性能够进行正常的动画效果
+   </script>
+</body>
+</html>

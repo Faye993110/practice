@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            #wrapper{
+                overflow: hidden;
+            }
+            #sidebar{
+                float: right;
+                width: 240px;
+                background-color: #eee;
+            }
+            #content{
+                 margin-right: 260px; 
+                background-color: red;
+            }
+            #footer{background-color: #f00;color:#fff; margin-top: 1em}
+
+            #wrapper1{
+                position: relative;
+                /* top: 20px; */
+                *zoom: 1;
+            }
+            #content1{
+                margin-right:300px;
+                background-color: red;
+
+            }
+            #sidebar1{
+                position: absolute;
+                top:0;
+                right: 0;
+                width: 260px;
+                background-color: blueviolet;
+            }
+            #footer1{background-color: #f00;color:#fff; margin-top: 1em}
+
+            #sidebar2{
+                float: right;
+                width: 300px;
+                background-color: yellow;
+            }
+            #content2{
+                margin-left: -310px;
+                background-color: rebeccapurple;
+                float: left;
+                width: 100%;
+
+            }
+            #content2b{
+                margin-left: 310px;
+            }
+            .clear{
+                clear:both; 
+                height: 0; 
+                line-height: 0; 
+                font-size: 0
+            }
+            #footer2{background-color: #f00;color:#fff; margin-top: 20px}
+        </style>
+    </head>
+    <body>
+        <!-- sidebar在前面，自适应区域在后面，但是通常需要先加载主要内容 -->
+        <div id="wrapper">
+            <div id="sidebar" style="height:240px">固定区宽度</div>
+            <div id="content" style="height:300px">自适应区宽度</div>
+        </div>
+        <div id="footer">后面的一个DIV，以确保前面的定位不会导致后面的变形</div>
+
+        <!-- 先加载主要内容，再加载侧边，方案1： -->
+        <!-- 但是这种方案的错误在于，footer说——我不给绝对主义者让位！
+        
+        其实这与footer无关，而是因为wrap对sidebar的无视造成的——你再长，我还是没感觉。
+        
+        看来这种定位方式只能满足sidebar自己，但对他的兄弟们却毫无益处。 -->
+        
+        <!-- 也就是说绝对定位脱离了文档流 -->
+        
+        <div id="wrapper1">
+            <div id="content1" style="height:300px">自适应区域在前面</div>
+            <div id="sidebar1" style="height:300px">固定区宽度</div>
+        </div>
+        <div id="footer1">后面的一个DIV，以确保前面的定位不会导致后面的变形</div>
+
+         <!-- 先加载主要内容，再加载侧边，方案2： -->
+         <div id="wrapper2">
+                <div id="content2" style="height:140px;">
+                        <div id="content2b">
+                          content自适应区，在前面
+                        </div>
+                </div>
+                <div id="sidebar2" style="height:340px">固定区宽度</div>
+                <div class="clear"></div>
+        </div>
+        <div id="footer2">后面的一个DIV，以确保前面的定位不会导致后面的变形</div>
+    </body>
+</html>

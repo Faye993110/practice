@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <style>
+
+            div{
+                width: 100px; 
+                height: 100px; 
+                background: red; 
+                margin: 15px; 
+                padding: 10px; 
+                border: 5px solid green; 
+                display: inline-block; 
+                overflow: hidden; 
+            }
+           .none{
+               display:none;
+           }
+
+           .hidden{
+            visibility:hidden
+           }
+
+           .opacity{
+               opacity: 0;
+           }
+
+           .box-content{
+               width: 0;
+               height: 0;
+               margin:0;
+               border:0;
+               padding:0;
+               overflow: hidden;
+           }
+        </style>
+    </head>
+    <body>
+       <div class="none">
+         我用display：none来隐藏
+       </div>
+       <div class="hidden">
+           我用visibility:hidden 来隐藏
+       </div>
+       <div class="opacity">
+           我用opacity：0来隐藏了
+       </div>
+       <div class="box-content">
+           用奇葩的方法,盒子模型都设置为0；并且使用overflow ：hidden
+       </div>
+       <script>
+           //下面说明4种隐藏元素的方法：
+           //1、display:none
+           //设置元素最常用的方法，
+        //    .none{
+        //        display:none;
+        //    }
+           //将元素设置为display:none后，元素在页面上将彻底消失，元素本来占有的空间就会被其他元素占有，也就是说它会导致浏览器的重排和重绘。
+           
+           //2、visibility : hiden
+           //设置元素的visibility为hidden也是一种常用的隐藏元素的方法，
+           //和display:none的区别在于，元素在页面消失后，其占据的空间依旧会保留着，所以它只会导致浏览器重绘而不会重排。
+           //visibility:hidden适用于那些元素隐藏后不希望页面布局会发生变化的场景
+
+
+           //3、opacity:0
+           //opacity属性我相信大家都知道表示元素的透明度，而将元素的透明度设置为0后，在我们用户眼中，元素也是隐藏的，这算是一种隐藏元素的方法。
+           //这种方法和visibility:hidden的一个共同点是元素隐藏后依旧占据着空间，但我们都知道，设置透明度为0后，元素只是隐身了，它依旧存在页面中。
+
+
+           //4、设置height，width等盒模型属性为0
+           //这是我总结的一种比较奇葩的技巧，简单说就是将元素的margin，border，padding，height和width等影响元素盒模型的属性设置成0，
+           //如果元素内有子元素或内容，还应该设置其overflow:hidden来隐藏其子元素，这算是一种奇技淫巧
+           //这种方式既不实用，也可能存在着着一些问题。但平时我们用到的一些页面效果可能就是采用这种方式来完成的，
+           //比如jquery的slideUp动画，它就是设置元素的overflow:hidden后，接着通过定时器，
+           //不断地设置元素的height，margin-top，margin-bottom，border-top，border-bottom，padding-top，padding-bottom为0，从而达到slideUp的效果。
+
+           //元素隐藏后的事件响应：
+           $(".none").on("click", function () {  //无法接触到元素，所有鼠标点击无法触发
+                 console.log("none clicked");
+           })
+           $(".hidden").on("click", function () {//元素存在，但是无法触发点击事件
+                 console.log("hidden clicked");
+           })
+           $(".opacity").on("click", function () {//可以触发
+                console.log("opacity clicked");
+            })
+            $(".box-content").on("click", function () {//height:0：将元素的高度设置为0，并且设置overflow:hidden。
+                                                       //使用这种方法来隐藏元素，是否可以触发事件要根据具体的情况来分析。
+                                                       //如果元素设置了border，padding等属性不为0，很显然，页面上还是能看到这个元素的，触发元素的点击事件完全没有问题。
+                                                       //如果全部属性都设置为0，很显然，这个元素相当于消失了，即无法触发点击事件。
+                console.log("box-content clicked");
+            })
+
+            $(".none").click();//可以触发，也就是通过JS可以触发被设置为display:none的元素的事件。
+                               //所以前面无法触发点击事件的真正原因是鼠标无法真正接触到被设置成隐藏的元素！！！
+        </script>
+    </body>
+</html>
