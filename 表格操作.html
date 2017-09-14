@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+          body,html{
+                padding: 0;
+                margin: 0;
+                font-size: 14px;
+                color: #000000;
+            }
+            table{
+                border-collapse: collapse;
+                width: 100%;
+                table-layout: fixed;
+            }
+            thead{
+                background: #3d444c;
+                color: #ffffff;
+            }
+            td,th{
+                border: 1px solid #e1e1e1;
+                padding: 0;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+            <table id="jsTrolley">
+                    <thead><tr><th>名称</th><th>价格</th><th>操作</th></tr></thead>
+                    <tbody>
+                        <tr><td>产品1</td><td>10.00</td><td><a href="javascript:void(0);">删除</a></td></tr>
+                        <tr><td>产品2</td><td>30.20</td><td><a href="javascript:void(0);">删除</a></td></tr>
+                        <tr><td>产品3</td><td>20.50</td><td><a href="javascript:void(0);">删除</a></td></tr>
+                    </tbody>
+                    <tfoot><tr><th>总计</th><td colspan="2">60.70(3件商品)</td></tr></tfoot>
+                </table>
+    <script>
+      function add(items) {
+          var tbody = document.getElementsByTagName("tbody")[0];
+          var tdName = document.createElement("td");
+          var tdPrice = document.createElement("td");
+          var tdLast = document.createElement("td");
+          tdName.innerHTML = items.name;
+          tdPrice.innerHTML = items.price.toFixed(2);
+          tdLast.innerHTML = "<a href="+"javascript:void(0);"+">删除</a>"
+          var tr = document.createElement('tr');
+          tr.appendChild(tdName);
+          tr.appendChild(tdPrice);
+          tr.appendChild(tdLast);
+          tbody.appendChild(tr);
+          var trs = tbody.children;
+          var total = 0;
+          for(var i = 0; i < trs.length; i++){
+              total += Number(trs[i].children[1].innerHTML);
+          }
+          total = total.toFixed(2);
+          var tdTotal = document.getElementsByTagName("tfoot")[0].children[0].children[1];
+          tdTotal.innerHTML = total + '（'+trs.length+"件商品）";
+      }
+     // add({name: "leri", price: 24});
+      
+      function bind(obj) {
+          var rowIndex = obj.parentElement.parentElement;
+          var tbody = document.getElementsByTagName("tbody")[0];
+          tbody.removeChild(rowIndex);
+          var trs = tbody.children;
+          var total = 0;
+          for(var i = 0; i < trs.length; i++){
+              total += Number(trs[i].children[1].innerHTML);
+          }
+          total = total.toFixed(2);
+          var tdTotal = document.getElementsByTagName("tfoot")[0].children[0].children[1];
+          tdTotal.innerHTML = total + '（'+trs.length+"件商品）";
+     }
+     var a = document.querySelectorAll("a");
+    //  console.log(a[0]);
+    //  a[0].onclick = function(){
+    //      bind(a[0]);
+    //  }
+     for(let i = 0; i < a.length; i++){
+        a[i].onclick = function(){
+            bind(a[i]);
+        }
+    }
+    </script>
+    </body>
+</html>
+
+

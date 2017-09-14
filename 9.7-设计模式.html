@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+       <script>
+        //   //1、工厂模式
+        //  //主要好处就是可以消除对象间的耦合，通过使用工程方法而不是new关键字。将所有实例化的代码集中在一个位置防止代码重复。
+        //  //工厂模式解决了重复实例化的问题 ，但还有一个问题,那就是识别问题，因为根本无法 搞清楚他们到底是哪个对象的实例。
+        //   function person(name, age, job){
+        //       var data = {} || new Object();
+        //       data.name = name;
+        //       data.age = age;
+        //       data.job = job;
+        //       data.getName = function(){
+        //           alert(this.name);
+        //       }
+        //       return data;
+        //   }
+        //  var test1 = person("wang", 22, "student");
+        //  var test2 = person("dai", 33, "teacher");
+        //  console.log(test1);
+        //  console.log(test2);
+        //  console.log(test1);
+        // //  console.log(test1.getName == test2.getName);//false
+        // //  console.log(test1.getName() === test2.getName());//true
+
+
+        //  //2、构造函数模式
+        // //  将属性和方法赋值给了this
+        // //  没有直接创建对象、没有return返回语句
+        // //  函数名是大写字母P开头，表示构造函数 //借鉴其他OO语言
+        // //  不同实例的同名函数是不相等 alert(obj.getName == obj1.getName) //false
+        // //  构造函数主要问题：每个方法都要在每个实例上重新创建一遍，然后创建两个完成同样任务的Function是没有必要的，可以通过将构造函数中定义在this上的函数转移到构造函数外部，通过调用函数名即可
+        //  function Person(name, age, job){
+        //      this.name = name;
+        //      this.age = age;
+        //      this.job = job;
+        //      this.getName = function(){
+        //          alert(this.name);
+        //      }
+        //  }
+        //  var obj = new Person("wang", 33, "coder");
+
+        //  //3、原型（property）模式
+        // //  创建的每个函数都有一个原型（prototype）属性，这个属性是一个指针，指向一个对象。
+        // //  原型模型好处在于可以让所有对象实例共享它所包含的属性和方法，也就是说，不用在构造函数中定义对象实例的信息，而是将这些信息直接添加到原型对象中。
+        // //  问题是，他省略了构造函数传递初始化参数。 构造函数、原型、实例三者之间的关系？ 
+        // //  每个构造函数都有一个原型对象，每个原型对象都包含一个指向构造函数的指针，而实例都包含一个指向原型对象的内部指针。
+
+        // function Person3(){
+
+        // }
+        // Person3.prototype.name = "wang";
+        // Person3.prototype.getName = function(){
+        //     alert(this.name)
+        // } 
+
+        // var obj1 = new Person3();
+        //  obj1.getName();
+
+        //  // 4、组合使用构造函数和原型模式
+        //  //集前两种之长。也建议常用这种方式创建对象
+        //  function Person(name, age, job){
+        //     this.name = name
+        //     this.age = age
+        //     this.job = job
+        //  }
+
+        // Person.prototype = {
+        //     constructor: Person,
+        //     getName:function(){
+        //         alert(this.name)
+        //     }
+        //  }
+        // var obj1 = new Person('aierui' ,20, 'student')
+        // obj1.getName();//aierui
+         
+
+
+        //练习
+        function obj(name){
+            //if(name){
+                this.name = name;
+            //}
+            return this;
+        }
+        obj.prototype.name = "name2";
+        var a = obj("name1");
+        var b = new obj('myName');
+        
+        console.log(a.name);//name1
+        console.log(window.name);//name1
+        console.log(b.name);//myName
+        console.log(window.name);
+        </script>
+    </body>
+</html>

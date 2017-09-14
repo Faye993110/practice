@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+       <script>
+           //如何删除一个cookie
+           //1.将时间设为当前时间往前一点。
+           var date = new Date();
+           console.log(date.getDate());
+           date.setDate(date.getDate() - 1);//设置日期天数
+
+           //2.expires的设置
+           document.cookie = 'user=' + encodeURIComponent('name') + ';expires = ' + new Date(0);
+
+           //document.write()的用法
+          // document.write() 方法可以用在两个方面：页面载入过程中用实时脚本创建页面内容，以及用延时脚本创建本窗口或新窗口的内容。
+
+           //document.write 只能重绘整个页面。 innerHTML 可以重绘页面的一部分
+       </script>
+    </body>
+</html>

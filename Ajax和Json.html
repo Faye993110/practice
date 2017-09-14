@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+       <script>
+          //Ajax 工作过程
+         // 1、创建AJAX对象
+
+         // 2、发出HTTP请求
+
+        //3、接收服务器传回的数据
+
+        // 4、更新网页数据
+
+        //open(method,url,async) 
+
+        //创建ajax过程
+        //（1）创建一个XMLHttpRequest 对象 ,也就是创建一个异步调用的对象
+        //（2）创建一个新的HTTP请求，并指定该请求的方法、URL以及验证信息
+        //（3）设置响应HTTP请求状态变化函数
+        //（4）发送HTTP请求
+        //（5）获取异步调用返回的数据
+        //（6）使用javascript 和 DOM实现异步刷新
+        
+         var xmlRequest = new XMLHttpRequest();
+         xmlRequest.open("get", "test.json", true);
+         xmlRequest.send();
+         xmlRequest.onreadystatechange = function(){
+             if(xmlRequest.readystate === 4 & xmlRequest.status === 200){
+                 //dosomething
+             }
+         }
+       </script>
+    </body>
+</html>

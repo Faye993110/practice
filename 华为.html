@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+       <script>
+           function test1(arr){
+               if(arr[0] == '-'){
+                   var arr0 = arr.slice(1);
+                   return arr0.length;
+               }else{
+                   return arr.length;
+               }
+           }
+           function test2(arr){
+               if(arr[0] == '-'){
+                   var arr0 = arr.slice(1);
+                   arr0[0] = '-' + arr0[0];
+                   return arr0.join(" ");
+               }else{
+                   return arr.join(' ');
+               }
+
+           }
+
+           function test3(arr){
+             if(arr[0] == '-'){
+                   var arr0 = arr.slice(1);
+                    arr0.reverse();
+                    arr0[0] = '-' + arr0[0];
+                    return arr0.join('');
+               }else{
+                  return arr.reverse().join('');
+               }
+           }
+        //     var arr = ['-', '1', '2', '3', '4','5']
+        //    console.log(test1(arr));
+        //    console.log(test2(arr));
+        //    console.log(test3(arr));
+
+
+           function test(arr){
+                var arr1 = arr[0].split('.');
+                var arr2 = arr[1].split('.');
+
+                var arr3 = arr[2].split('.');
+                var arr4 = arr[3].split('.');
+                arr1 = tran(arr1);
+                arr2 = tran(arr2);
+                arr3 = tran(arr3);
+                arr4 = tran(arr4);
+                var str1 = "No Overlap IP";
+                var str2 = "Overlap IP";
+                if(compare(arr1, arr4) && compare(arr3, arr2)){
+                    return str1;
+                }else{
+                    return str2;
+                }
+
+           }
+        //    function compare(arr1,arr2){
+        //        if(arr1[0] >arr2[0] && arr1[1] > arr2[1] && arr1[2] > arr2[2] && arr1[3]>arr2[3]){
+        //            return true;
+        //        }else{
+        //            return false;
+        //        }
+        //    }
+           function tran(arr){
+               for(var i = 0; i < arr.length; i++){
+                   arr[i] = Number(arr[i])
+               }
+               return arr;
+           }
+        //    var arr = ["1.1.1.1","255.255.255.255","2.2.2.2","3.3.3.3"];
+        //    console.log(test(arr));
+           
+          var arr= ["1223","22","3232","2016"];
+          var n = 3;
+          console.log(testSort(arr, n));
+           function testSort(arr, n){ 
+               var arr = tran(arr);
+               var brr = [];
+               var obj = [];
+               for(var i = 0; i < arr.length; i++){
+                   brr[i] = change(arr[i]);
+                   obj.push({"arr" : arr[i], "brr" : brr[i]})
+               }
+              obj.sort(compare('brr'));
+              return obj[n-1].arr;
+
+           }
+           function change(num){
+                var num = num+"";
+               if(num.length > 3){
+                   num = num.slice(num.length - 3);
+                   num = num - 0;
+                   return Number(num);
+               }else{
+                   return Number(num);
+               }
+           }
+        // function change(num){
+
+        // }
+        function compare(property){
+            return function(a,b){
+                var value1 = a[property];
+                var value2 = b[property];
+                return value1 - value2;
+            }
+        }
+   //     console.log(arr.sort(compare('age')))
+            
+       </script>
+    </body>
+</html>

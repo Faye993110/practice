@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+       <script>
+// 传入参数
+// 第一个参数:目标对象
+
+// 第二个参数:需要定义的属性或方法的名字。
+
+// 第三个参数:目标属性所拥有的特性。（descriptor）
+           var a = {};
+           Object.defineProperty(a, "b",{
+               value : 123
+           })
+           console.log(a.b);
+       </script>
+    </body>
+</html>

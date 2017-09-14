@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div>
+            <input type="button" value="点击我" id="btn">
+        </div>
+       <script>
+           //封装过期控制代码，把当前时间封装进value
+           function set(key, value){
+              var curTime = new Date().getTime();
+              localStorage.setItem(key,JSON.stringify({data : value, time:curTime}));
+           }
+
+           //设置过期时间,exp就是过期时间
+           function get(key, exp){
+              var data = localStorage.getItem(key);
+              var dataObj = JSON.parse(data);
+              if(new Date().getTime() - dataObj.time > exp){
+                  console.log("已经过期啦")
+              }else{
+                  //如果没有过期则返回原来封装的value值
+                var dataObjDatatoJson = JSON.parse(dataObj.data)
+                return dataObjDatatoJson;
+              }
+           }
+          window.onload = function(){
+            var btn = document.getElementById('btn');
+            var value = '{"name":"和派孔明","Age":"18","address":"陆家嘴金融城"}';
+            set('information',value);
+
+            btn.onclick = function(){
+                var dataObjData = get('information', '5000');
+                console.log(dataObjData || null);
+                if (dataObjData!="" && dataObjData!=null) {
+                        console.log("姓名:"+dataObjData.name);
+                        console.log("年龄:"+dataObjData.Age );
+                        console.log("地址:"+dataObjData.Age );
+                }else{
+                    alert("获取的信息已经过期");
+                }   
+            }
+            
+          }
+ 
+
+          //使用场景： 
+          //1.利用本地数据,减少网络传输 
+          //2.弱网络环境下，高延迟,低带宽,尽量把数据本地化
+          
+       </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+       <script>
+           var fullname = 'John Doe';
+            var obj = {
+            fullname: 'Colin Ihrig',
+            prop: {
+                fullname: 'Aurelio De Rosa',
+                getFullname: function() {
+                    return this.fullname;
+                }
+            }
+            };
+
+            console.log(obj.prop.getFullname());//Aurelio De Rosa
+            
+            var test = obj.prop.getFullname;
+            
+            console.log(test()); //John Doe
+
+            //在一个函数中，this的行为，取决于JavaScript函数的调用方式和定义方式，而不仅仅是看它如何被定义的。
+        </script>
+    </body>
+</html>

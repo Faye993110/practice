@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+           *{
+               margin : 0;
+               padding : 0;
+               box-sizing: border-box;
+           }
+        #myDiv {  
+            width: 700px;  
+            height: 200px;  
+            position: relative;  
+        }  
+          
+        ul {  
+            list-style: none;  
+            position: absolute;  
+            right: 10px;  
+            bottom: 0;  
+        }  
+          
+        #myDiv li {  
+            width: 15px;  
+            height: 15px;  
+            border-radius: 50%;  
+            background: indianred;  
+            display: inline-block;  
+            font-size: 12px;  
+            line-height: 15px;  
+            text-align: center;  
+        }  
+          
+        #myDiv .over {  
+            background: greenyellow;  
+        }  
+
+        </style>
+    </head>
+    <body>
+       <div id="myDiv">
+           <img src="1.jpg" id="myImg">
+           <ul>
+               <li class="over" onmouseover="myGame(0)" onmouseout="myGo()">1</li>
+               <li onmouseover="myGame(1)" onmouseout="myGo()">2</li>
+               <li onmouseover="myGame(2)" onmouseout="myGo()">3</li>
+               <li onmouseover="myGame(3)" onmouseout="myGo()">4</li>
+               <li onmouseover="myGame(4)" onmouseout="myGo()">5</li>
+           </ul>
+       </div>
+       <script>
+          var arr = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];  
+            var myDiv = document.getElementById("myDiv");  
+            var myImg = document.getElementById("myImg");  
+            var arrLi = myDiv.getElementsByTagName("li");  
+            var n = 0;  
+            var t = setInterval(fun, 1000);  
+  
+            function fun() {  
+                for(var i = 0; i < arrLi.length; i++) {  
+                    arrLi[i].className = "";  
+                }  
+                myImg.src =  arr[n];  
+                arrLi[n].className = "over";  
+                n++;  
+                if(n > arr.length - 1) {  
+                    n = 0;  
+                }  
+            }  
+  
+            function myGame(v){  
+                clearInterval(t);//当鼠标经过(放在)li上的时候停止轮播  
+                myImg.src = arr[v];//鼠标经过(放在)那个li上就显示那张图片  
+                //所有li都是红色  
+                for(var i=0;i<arrLi.length;i++){  
+                    arrLi[i].className = "";  
+                }  
+                arrLi[v].className = "over";//鼠标经过(放在)那个li时那个li变成黄色  
+                //下面代码是为了当鼠标离开时能够在下一张图片继续滑动而不是在第一张开始  
+                if(n==4){  
+                    n=0;  
+                }else{  
+                    n=v+1;  
+                }  
+            }  
+            function myGo(){  
+                t=setInterval(fun,1000);  
+            }
+
+       </script>
+    </body>
+</html>
